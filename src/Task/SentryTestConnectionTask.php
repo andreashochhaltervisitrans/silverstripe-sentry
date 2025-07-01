@@ -44,7 +44,7 @@ class SentryTestConnectionTask extends BuildTask
      * @param HTTPRequest $request
      * @return void
      */
-    public function execute($request = null): void
+    public function execute(InputInterface $input, PolyOutput $output): int
     {
         /** @var LoggerInterface $logger */
         $logger = Injector::inst()->createWithArgs(Logger::class, ['error-log'])
@@ -54,22 +54,10 @@ class SentryTestConnectionTask extends BuildTask
             $func = strtolower($name);
             $logger->$func(sprintf("Testing Severity Level: %s", $name));
 
-            self::output(sprintf("Tested Security Level: %s", $name));
+            $output->writeln(sprintf("Tested Security Level: %s", $name));
         }
 
-        self::output("\nDone!");
-    }
-
-    /**
-     * Simple output logging.
-     *
-     * @param string $message
-     * @return void
-     */
-    private static function output(string $message): void
-    {
-        $newLine = Director::is_cli() ? PHP_EOL : '<br/>';
-        printf($message . $newLine);
+        $output->writeln("Done!");
     }
 
 }
