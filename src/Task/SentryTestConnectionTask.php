@@ -18,6 +18,8 @@ use Silverstripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\BuildTask;
+use SilverStripe\PolyExecution\PolyOutput;
+use Symfony\Component\Console\Input\InputInterface;
 
 /**
  * Tests a connection to Sentry, without having to hack directly inside
