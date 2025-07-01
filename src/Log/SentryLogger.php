@@ -280,7 +280,7 @@ class SentryLogger
      * @param  mixed Member|null $member
      * @return array
      */
-    public static function user_data(Member $member = null): array
+    public static function user_data(?Member $member = null): array
     {
         if (!$member) {
             $member = Security::getCurrentUser();

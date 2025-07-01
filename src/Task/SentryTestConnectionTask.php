@@ -30,12 +30,12 @@ class SentryTestConnectionTask extends BuildTask
     /**
      * @var string
      */
-    protected $title = 'Test Sentry Configuration';
+    protected string $title = 'Test Sentry Configuration';
 
     /**
      * @var string
      */
-    protected $description = 'Captures message for all levels available';
+    protected static string $description = 'Captures message for all levels available';
 
     /**
      * Implement this method in the task subclass to
@@ -44,7 +44,7 @@ class SentryTestConnectionTask extends BuildTask
      * @param HTTPRequest $request
      * @return void
      */
-    public function run($request = null): void
+    public function execute($request = null): void
     {
         /** @var LoggerInterface $logger */
         $logger = Injector::inst()->createWithArgs(Logger::class, ['error-log'])
