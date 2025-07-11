@@ -258,14 +258,18 @@ class SentryLogger
      */
     public static function get_ip(): ?string
     {
-        if (Controller::has_curr()) {
+        $ip = null;
+        if (Controller::curr()) {
             $controller = Controller::curr();
 
             if ($request = $controller->getRequest()) {
-                return $request->getIP();
+                $ip = $request->getIP();
             }
         }
 
+        if ($ip) {
+            return $ip;
+        }
         if (isset($_SERVER['REMOTE_ADDR'])) {
             return $_SERVER['REMOTE_ADDR'];
         }
